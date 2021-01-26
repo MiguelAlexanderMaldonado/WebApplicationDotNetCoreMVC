@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebApplication.Models;
+using WebApplication.Services;
 
 namespace WebApplication
 {
@@ -24,11 +21,16 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Setting up Dependency Injection for Mock Repository (only to be persistent in that demo, not valid in real scenario)
+            services.AddSingleton<IRepository<Book>, MockBooksRepository>();
+            services.AddSingleton<IRepository<Carousel>, MockCarouselRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Checks if the current host environment name is Development.
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -39,13 +41,19 @@ namespace WebApplication
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            // Adds middleware for redirecting HTTP Requests to HTTPS.
             app.UseHttpsRedirection();
+
+            // Enables static file serving for the current request path.
             app.UseStaticFiles();
 
+            // 
             app.UseRouting();
 
+            // 
             app.UseAuthorization();
 
+            // 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Carousel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="title">
+    <h2>Index</h2>
+    <h3>Carousels</h3>
+</div>
+@foreach (Carousel item in Model)
+{
+    <div>
+        <h2>@item.Title</h2>
+    </div>
+    <span>@item.Description</span>
+}

@@ -1,26 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using WebApplication.Models;
+using WebApplication.Services;
+using WebApplication.ViewModel;
 
 namespace WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
+        #region Variables
 
-        public HomeController(ILogger<HomeController> logger)
+        private IRepository<Book> bookRepo;
+        private IRepository<Carousel> carouselRepo;
+
+        #endregion Variables
+
+        #region Public methods
+
+        public HomeController(IRepository<Book> books, IRepository<Carousel> carousels) : base()
         {
-            _logger = logger;
+            this.bookRepo = books;
+            this.carouselRepo = carousels;
         }
 
         public IActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel()
+            {
+                Books = this.bookRepo.GetAll(),
+                Carousels = this.carouselRepo.GetAll()
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()
@@ -33,5 +44,34 @@ namespace WebApplication.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult AddBook()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBook(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                Book item = new Book()
+                {
+                    Id = this.bookRepo.GetAll().Max(m => m.Id) + 1,
+                    Title = book.Title,
+                    Description = book.Description,
+                    Author = book.Author,
+                    PublishDate = book.PublishDate,
+                    Price = book.Price,
+                    Image = book.Image
+                };
+                this.bookRepo.Add(item);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        #endregion Public methods
     }
 }
