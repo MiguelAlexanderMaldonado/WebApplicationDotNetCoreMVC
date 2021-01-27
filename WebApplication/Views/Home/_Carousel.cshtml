@@ -1,16 +1,42 @@
 ﻿@model IEnumerable<Carousel>
 @{
     ViewData["Title"] = "Home Page";
+    int count = 0;
 }
 
-<div class="title">
-    <h2>Index</h2>
-    <h3>Carousels</h3>
+<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+
+    @if (Model.Count() > 0)
+    {
+        <ol class="carousel-indicators">
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            @for (var i = 1; i < Model.Count(); i++)
+            {
+                <li data-target="#carouselIndicators" data-slide-to="@i"></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @foreach (Carousel item in Model)
+            {
+                <div class="carousel-item @(count==0? "active" : "")">
+                    <div class="middle">
+                        <img src="~/image/@item.ImageURL" alt="@item.Id slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@item.Title</h5>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+                count++;
+            }
+        </div>
+    }
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
-@foreach (Carousel item in Model)
-{
-    <div>
-        <h2>@item.Title</h2>
-    </div>
-    <span>@item.Description</span>
-}

@@ -23,23 +23,23 @@ namespace WebApplication.Services
                 new Carousel()
                 {
                     Id = 0,
-                    Title = "Discount books",
-                    Description = "Discount books get them all",
-                    ImageURL = ""
+                    Title = "Clean Code",
+                    Description = "A Handbook of Agile Software Craftsmanship",
+                    ImageURL = "CleanCode.jpg"
                 },
                 new Carousel()
                 {
                     Id = 1,
-                    Title = "New books",
-                    Description = "All brand new books",
-                    ImageURL = ""
+                    Title = "Software Engineering for Science",
+                    Description = "Computational Science Series",
+                    ImageURL = "SoftwareEngineeringForScience.jpg"
                 },
                 new Carousel()
                 {
-                    Id = 0,
-                    Title = "Subscription",
-                    Description = "Discount on monthly subscription",
-                    ImageURL = ""
+                    Id = 3,
+                    Title = "Software Engineering",
+                    Description = "Second Edition",
+                    ImageURL = "SoftwareEngineering.jpg"
                 }
             };
         }

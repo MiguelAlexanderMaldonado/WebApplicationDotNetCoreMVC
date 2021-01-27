@@ -21,4 +21,8 @@
     <PackageReference Include="NLog" Version="4.7.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
 </Project>
