@@ -1,6 +1,7 @@
 ﻿@model WebApplication.ViewModel.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
+    int count = 1;
 }
 
 <div class="container">
@@ -10,24 +11,27 @@
 </div>
 
 <hr />
-<div>
-    <h3>Books</h3>
+
+<div class="container list-book">
+    <div class="row">
+        @foreach (Book item in Model.Books)
+        {
+            <div class="col-lg-4">
+                <div class="container">
+                    <img class="list-book-item" src="~/image/@item.Image" />
+                    <p></p>
+                    <h4>@item.Title</h4>
+                    <p>@item.Author</p>
+                    <p>@item.Description</p>
+                </div>
+            </div>
+            if (count % 3 == 0)
+            {
+                @:</div>
+                @:<div class="row">
+            }
+            count++;
+        }
+    </div>
 </div>
-@foreach (Book item in Model.Books)
-{ 
-    <div>
-        <h3>@item.Title</h3>
-    </div>
-    <div>
-        <i>@item.Author</i>
-    </div>
-    <div>
-        <span>@item.PublishDate</span>
-    </div>
-    <div>
-        <strong>@item.Price</strong>
-    </div>
-    <div>
-        <span>@item.Description</span>
-    </div>
-}
+

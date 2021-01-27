@@ -22,32 +22,82 @@ namespace WebApplication.Services
                 new Book()
                 {
                     Id = 0,
-                    Title = "JavaScript and JSON Essentials",
-                    Description = "Use JSON for building web applicaitons with technologies like HTML, ",
-                    Author = "Bruno Joseph D'mello, Sai Srinivas Sriparasa",
+                    Title = "Clean Code",
+                    Description = "A Handbook of Agile Software Craftsmanship",
+                    Author = "Robert C. Martin",
                     PublishDate = "April 2018",
                     Price = 30,
-                    Image = "img0"
+                    Image = "CleanCode.jpg"
                 },
                 new Book()
                 {
                     Id = 1,
-                    Title = "Beginning C# 7 Hands-On - The Core Lenguage",
-                    Description = "A C# 7 beginners guide to the core parts of the C# lenguage!",
-                    Author = "Tom Owsiak",
+                    Title = "Software Engineering for Science",
+                    Description = "Computational Science Series",
+                    Author = "Jeffrey C. Carver, Neil P. Chue Hong",
                     PublishDate = "August 2017",
                     Price = 39.99,
-                    Image = "img1"
+                    Image = "SoftwareEngineeringForScience.jpg"
                 },
                 new Book()
                 {
                     Id = 2,
-                    Title = ".NET Core 2.0 By Example",
-                    Description = "Build cross-platform solutions with .NET Core 2.0 htrough real-life scenarios",
-                    Author = "Rishabh Verma, Neha Shrivastava",
+                    Title = "Software Engineering",
+                    Description = "Second Edition",
+                    Author = "Ronald J. Leach",
                     PublishDate = "March 2018",
                     Price = 30,
-                    Image = "img2"
+                    Image = "SoftwareEngineering.jpg"
+                },
+                new Book()
+                {
+                    Id = 3,
+                    Title = "Software Engineering for Science",
+                    Description = "Computational Science Series",
+                    Author = "Jeffrey C. Carver, Neil P. Chue Hong",
+                    PublishDate = "August 2017",
+                    Price = 39.99,
+                    Image = "SoftwareEngineeringForScience.jpg"
+                },
+                new Book()
+                {
+                    Id = 4,
+                    Title = "Software Engineering",
+                    Description = "Second Edition",
+                    Author = "Ronald J. Leach",
+                    PublishDate = "March 2018",
+                    Price = 30,
+                    Image = "SoftwareEngineering.jpg"
+                },
+                new Book()
+                {
+                    Id = 5,
+                    Title = "Software Engineering",
+                    Description = "Second Edition",
+                    Author = "Ronald J. Leach",
+                    PublishDate = "March 2018",
+                    Price = 30,
+                    Image = "SoftwareEngineering.jpg"
+                },
+                new Book()
+                {
+                    Id = 6,
+                    Title = "Software Engineering for Science",
+                    Description = "Computational Science Series",
+                    Author = "Jeffrey C. Carver, Neil P. Chue Hong",
+                    PublishDate = "August 2017",
+                    Price = 39.99,
+                    Image = "SoftwareEngineeringForScience.jpg"
+                },
+                new Book()
+                {
+                    Id = 7,
+                    Title = "Software Engineering",
+                    Description = "Second Edition",
+                    Author = "Ronald J. Leach",
+                    PublishDate = "March 2018",
+                    Price = 30,
+                    Image = "SoftwareEngineering.jpg"
                 }
             };
         }
